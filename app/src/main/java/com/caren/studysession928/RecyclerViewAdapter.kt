@@ -1,5 +1,6 @@
 package com.caren.studysession928
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,11 @@ class RecyclerViewAdapter(private val items: List<String>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items.get(position)
         holder.textview.text = item
+
+        // Add an onClickListener for each item
+        holder.itemView.setOnClickListener {
+            Log.i("Caren", "Clicked on item in list: $position")
+        }
     }
 
     override fun getItemCount(): Int {
