@@ -8,9 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import android.content.Intent
 
-
-
-
 class RecyclerViewAdapter(private val items: List<String>) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
@@ -33,6 +30,8 @@ class RecyclerViewAdapter(private val items: List<String>) :
             // Launch edit activity when item is clicked
 
             val intent = Intent(holder.itemView.context, EditActivity::class.java)
+            // Pass in the string that was clicked
+            intent.putExtra("string", item)
             holder.itemView.context.startActivity(intent)
         }
     }

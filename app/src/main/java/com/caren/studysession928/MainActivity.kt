@@ -2,11 +2,13 @@ package com.caren.studysession928
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
-    val listOfItems = listOf("1", "2", "3", "4", "5")
+    val listOfItems = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +24,16 @@ class MainActivity : AppCompatActivity() {
 
         // 2. Edit items in my list through the new activity
         // 3. Go back to my main activity to see the edited item
+
+        // A new task will be added when the 'Save Button' is clicked
+        findViewById<Button>(R.id.saveButton).setOnClickListener {
+            // Grab the text from the EdiText view
+            val textInputted = findViewById<EditText>(R.id.editText).text.toString()
+            // Add it to our list
+            listOfItems.add(textInputted)
+            // Refresh the RecyclerView
+            adapter.notifyDataSetChanged()
+        }
 
     }
 }
