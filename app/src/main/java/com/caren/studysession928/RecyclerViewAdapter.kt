@@ -6,6 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import android.content.Intent
+
+
+
 
 class RecyclerViewAdapter(private val items: List<String>) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
@@ -26,6 +30,10 @@ class RecyclerViewAdapter(private val items: List<String>) :
         // Add an onClickListener for each item
         holder.itemView.setOnClickListener {
             Log.i("Caren", "Clicked on item in list: $position")
+            // Launch edit activity when item is clicked
+
+            val intent = Intent(holder.itemView.context, EditActivity::class.java)
+            holder.itemView.context.startActivity(intent)
         }
     }
 
